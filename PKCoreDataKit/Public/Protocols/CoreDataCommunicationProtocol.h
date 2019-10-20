@@ -19,7 +19,7 @@ Fetches data from the entity with the provided entity name.
  @param entityName The entity name
  @return Array of object stored on specified entity.
  */
-- (NSArray * _Nullable)fetchDataFrom:(NSString *)entityName;
+- (NSArray * _Nullable)fetchDataFromEntityWithName:(NSString *)entityName;
 
 /**
  Adds Item.

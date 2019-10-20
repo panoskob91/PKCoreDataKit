@@ -77,7 +77,7 @@
 
 - (void)deleteAllItems:(nonnull NSString *)entityName
 {
-    NSArray *entries = [self fetchDataFrom:entityName];
+    NSArray *entries = [self fetchDataFromEntityWithName:entityName];
     for (NSManagedObject *item in entries) {
         [self.managedObjectContext deleteObject:item];
     }
@@ -93,7 +93,7 @@
     //TODO: Implementation
 }
 
-- (NSArray * _Nullable )fetchDataFrom:(nonnull NSString *)entityName
+- (NSArray * _Nullable )fetchDataFromEntityWithName:(nonnull NSString *)entityName
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
     NSArray *entries;
