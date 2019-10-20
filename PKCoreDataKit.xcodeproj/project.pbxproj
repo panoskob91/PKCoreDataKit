@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA920D96235CCF950060F0A2 /* PKPersistenceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BA920D94235CCF950060F0A2 /* PKPersistenceManager.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		BA920D97235CCF950060F0A2 /* PKPersistenceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BA920D95235CCF950060F0A2 /* PKPersistenceManager.m */; };
 		BA9B6D13235CB5C00031EE09 /* CoreDataCommunicationProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9B6D12235CB5C00031EE09 /* CoreDataCommunicationProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA9B6D16235CB79B0031EE09 /* UpdateableObjectProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = BA9B6D15235CB79B0031EE09 /* UpdateableObjectProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BACCC471235C8ECA0064259A /* PKCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BACCC46F235C8ECA0064259A /* PKCoreDataKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +27,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA920D94235CCF950060F0A2 /* PKPersistenceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PKPersistenceManager.h; sourceTree = "<group>"; };
+		BA920D95235CCF950060F0A2 /* PKPersistenceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PKPersistenceManager.m; sourceTree = "<group>"; };
 		BA9B6D12235CB5C00031EE09 /* CoreDataCommunicationProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataCommunicationProtocol.h; sourceTree = "<group>"; };
 		BA9B6D15235CB79B0031EE09 /* UpdateableObjectProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UpdateableObjectProtocol.h; sourceTree = "<group>"; };
 		BACCC46C235C8ECA0064259A /* PKCoreDataKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PKCoreDataKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -89,6 +93,8 @@
 				BA9B6D15235CB79B0031EE09 /* UpdateableObjectProtocol.h */,
 				BACCC4A8235C92E90064259A /* CoreDataManager.h */,
 				BACCC4A9235C92E90064259A /* CoreDataManager.m */,
+				BA920D94235CCF950060F0A2 /* PKPersistenceManager.h */,
+				BA920D95235CCF950060F0A2 /* PKPersistenceManager.m */,
 			);
 			path = Public;
 			sourceTree = "<group>";
@@ -107,6 +113,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA920D96235CCF950060F0A2 /* PKPersistenceManager.h in Headers */,
 				BACCC471235C8ECA0064259A /* PKCoreDataKit.h in Headers */,
 				BA9B6D16235CB79B0031EE09 /* UpdateableObjectProtocol.h in Headers */,
 				BACCC4AA235C92E90064259A /* CoreDataManager.h in Headers */,
@@ -197,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA920D97235CCF950060F0A2 /* PKPersistenceManager.m in Sources */,
 				BACCC4AB235C92E90064259A /* CoreDataManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

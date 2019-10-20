@@ -22,7 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (strong, nonatomic) NSString *coreDataFileName;
 
-@property (strong, nonatomic, readonly) NSManagedObjectContext *mangedObjectContext;
+@property (strong, nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 
 /**
  Designated initialzer.

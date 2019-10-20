@@ -7,10 +7,10 @@
 //
 
 #import "CoreDataManager.h"
+#import "PKPersistenceManager.h"
 
 @interface CoreDataManager ()
 
-@property (strong, nonatomic, readonly) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic, readonly) NSPersistentContainer *persistentContainer;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (strong, nonatomic, readonly) NSManagedObjectModel *managedObjectModel;
@@ -19,6 +19,8 @@
 @end
 
 @implementation CoreDataManager
+
+@synthesize managedObjectContext = _managedObjectContext;
 
 #pragma mark - Initializers
 
@@ -42,48 +44,6 @@
 
 #pragma  mark - Provate Properties / functions
 
-- (NSURL *)applicationDocumentsDirectory {
-    NSFileManager *defaultFileManager = [NSFileManager defaultManager];
-    NSSearchPathDirectory documentDirectory = NSDocumentDirectory;
-    NSSearchPathDomainMask domainMask = NSUserDomainMask;
-    NSArray<NSURL *> *urls = [defaultFileManager URLsForDirectory:documentDirectory inDomains:domainMask];
-    return urls[urls.count - 1];
-}
-
-- (NSManagedObjectModel *)managedObjectModel {
-    NSURL *modelUrl = [[NSBundle mainBundle] URLForResource:self.coreDataFileName withExtension:@"momd"];
-    return [[NSManagedObjectModel alloc] initWithContentsOfURL:modelUrl];
-}
-
-- (NSPersistentContainer *)persistentContainer {
-    NSPersistentContainer *container = [[NSPersistentContainer alloc] initWithName:self.coreDataFileName];
-    [container loadPersistentStoresWithCompletionHandler:^(NSPersistentStoreDescription * _Nonnull storeDesc, NSError * _Nullable error) {
-        if (error) {
-            NSString *exeptionName = [NSString stringWithFormat:@"Unresolved error %@", error];
-            [NSException raise:exeptionName format:@"Could not find percistent container"];
-        }
-    }];
-    return container;
-}
-
-- (NSPersistentStoreCoordinator *)persistentStoreCoordinator {
-    NSPersistentStoreCoordinator *coordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:self.managedObjectModel];
-    NSString *pathComponent = [NSString stringWithFormat:@"%@.sqlite", self.coreDataFileName];
-    NSURL *url = [self.applicationDocumentsDirectory URLByAppendingPathComponent:pathComponent];
-    NSError *error = nil;
-    [coordinator addPersistentStoreWithType:NSSQLiteStoreType
-                              configuration:nil
-                                        URL:url
-                                    options:nil
-                                      error:&error];
-    if (error) {
-        NSLog(@"An error occured: %@", error);
-        abort();
-    }
-
-    return coordinator;
-}
-
 - (void)saveContext
 {
     if ([self.managedObjectContext hasChanges]) {
@@ -98,11 +58,12 @@
 
 #pragma mark - Public Properties / Functions
 
-//Lazy
-- (NSManagedObjectContext *)mangedObjectContext {
+- (NSManagedObjectContext *)managedObjectContext {
     if (!_managedObjectContext) {
+        PKPersistenceManager *persistenceManager = [PKPersistenceManager sharedInstance];
         NSManagedObjectContext *context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        context.persistentStoreCoordinator = self.persistentStoreCoordinator;
+        context.persistentStoreCoordinator = [persistenceManager persistentStoreCoordinatorFromCoreDataFileName:self.coreDataFileName];
+        _managedObjectContext = context;
         return context;
     }
 
