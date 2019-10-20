@@ -40,7 +40,7 @@
     return self;
 }
 
-#pragma  mark - Provate Properties
+#pragma  mark - Provate Properties / functions
 
 - (NSURL *)applicationDocumentsDirectory {
     NSFileManager *defaultFileManager = [NSFileManager defaultManager];
@@ -84,7 +84,19 @@
     return coordinator;
 }
 
-#pragma mark - Public Properties
+- (void)saveContext
+{
+    if ([self.managedObjectContext hasChanges]) {
+        NSError *error = nil;
+        [self.managedObjectContext save:&error];
+        if (error) {
+            NSString *exeptionName = [NSString stringWithFormat:@"Unresolved error %@", error];
+            [NSException raise:exeptionName format:@"Could not save changes"];
+        }
+    }
+}
+
+#pragma mark - Public Properties / Functions
 
 //Lazy
 - (NSManagedObjectContext *)mangedObjectContext {
@@ -97,6 +109,45 @@
     return _managedObjectContext;
 }
 
+- (void)addItem:(nonnull NSManagedObject<UpdateableObjectProtocol> *)item
+{
+    [item updateData];
+}
 
+- (void)deleteAllItems:(nonnull NSString *)entityName
+{
+    NSArray *entries = [self fetchDataFrom:entityName];
+    for (NSManagedObject *item in entries) {
+        [self.managedObjectContext deleteObject:item];
+    }
+}
+
+- (void)deleteItem:(nonnull NSManagedObject *)item
+{
+    [self.managedObjectContext deleteObject:item];
+}
+
+- (void)editData
+{
+    //TODO: Implementation
+}
+
+- (NSArray * _Nullable )fetchDataFrom:(nonnull NSString *)entityName
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] initWithEntityName:entityName];
+    NSArray *entries;
+    NSError *error = nil;
+    entries = [self.managedObjectContext executeFetchRequest:request error:&error];
+    if (error) {
+        NSLog(@"Fetch request error %@", error);
+    }
+
+    return entries;
+}
+
+- (void)saveData
+{
+    [self saveContext];
+}
 
 @end

@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "CoreDataCommunicationProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 /**
  A class for managing core data functionality
  */
-@interface CoreDataManager : NSObject
+@interface CoreDataManager : NSObject<CoreDataCommunicationProtocol>
 
 /**
  The file name for the .xcdatammodeld
