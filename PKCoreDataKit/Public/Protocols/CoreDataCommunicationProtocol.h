@@ -32,8 +32,6 @@ Fetches data from the entity with the provided entity name.
  */
 - (void)saveData;
 
-- (void)editData;
-
 /**
  Deletes item from core data.
 
@@ -46,7 +44,7 @@ Fetches data from the entity with the provided entity name.
 
  @param entityName The name of the entity
  */
-- (void)deleteAllItems:(NSString *)entityName;
+- (void)deleteAllItemsFromEntityWithName:(NSString *)entityName;
 
 @end
 

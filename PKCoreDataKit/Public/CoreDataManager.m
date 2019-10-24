@@ -75,7 +75,7 @@
     [item updateData];
 }
 
-- (void)deleteAllItems:(nonnull NSString *)entityName
+- (void)deleteAllItemsFromEntityWithName:(nonnull NSString *)entityName
 {
     NSArray *entries = [self fetchDataFromEntityWithName:entityName];
     for (NSManagedObject *item in entries) {
@@ -86,11 +86,6 @@
 - (void)deleteItem:(nonnull NSManagedObject *)item
 {
     [self.managedObjectContext deleteObject:item];
-}
-
-- (void)editData
-{
-    //TODO: Implementation
 }
 
 - (NSArray * _Nullable )fetchDataFromEntityWithName:(nonnull NSString *)entityName
