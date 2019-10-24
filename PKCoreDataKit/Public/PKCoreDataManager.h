@@ -15,7 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  A class for managing core data functionality
  */
-@interface CoreDataManager : NSObject<CoreDataCommunicationProtocol>
+@interface PKCoreDataManager : NSObject<CoreDataCommunicationProtocol>
 
 /**
  The file name for the .xcdatammodeld

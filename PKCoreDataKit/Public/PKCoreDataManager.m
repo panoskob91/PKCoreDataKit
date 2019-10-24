@@ -6,10 +6,10 @@
 //  Copyright © 2019 Panagiotis  Kompotis . All rights reserved.
 //
 
-#import "CoreDataManager.h"
+#import "PKCoreDataManager.h"
 #import "PKPersistenceManager.h"
 
-@interface CoreDataManager ()
+@interface PKCoreDataManager ()
 
 @property (strong, nonatomic, readonly) NSPersistentContainer *persistentContainer;
 @property (strong, nonatomic, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation CoreDataManager
+@implementation PKCoreDataManager
 
 @synthesize managedObjectContext = _managedObjectContext;
 
@@ -70,7 +70,7 @@
     return _managedObjectContext;
 }
 
-- (void)addItem:(nonnull NSManagedObject<UpdateableObjectProtocol> *)item
+- (void)addItem:(nonnull NSManagedObject<PKUpdateableObjectProtocol> *)item
 {
     [item updateData];
 }

@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "CoreDataManager.h"
-#import "IdentifiableProtocol.h"
+#import "PKCoreDataManager.h"
+#import "PKIdentifiableProtocol.h"
 
 //! Project version number for PKCoreDataKit.
 FOUNDATION_EXPORT double PKCoreDataKitVersionNumber;

@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "UpdateableObjectProtocol.h"
+#import "PKUpdateableObjectProtocol.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -26,7 +26,7 @@ Fetches data from the entity with the provided entity name.
 
  @param item The object to be added.
  */
-- (void)addItem:(NSManagedObject<UpdateableObjectProtocol> *)item;
+- (void)addItem:(NSManagedObject<PKUpdateableObjectProtocol> *)item;
 /**
  Saves data to core data.
  */

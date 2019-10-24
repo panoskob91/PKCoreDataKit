@@ -1,5 +1,5 @@
 //
-//  IdentifiableProtocol.h
+//  UpdateableObjectProtocol.h
 //  PKCoreDataKit
 //
 //  Created by Panagiotis  Kompotis  on 20/10/19.
@@ -10,15 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol IdentifiableProtocol <NSObject>
+@protocol PKUpdateableObjectProtocol <NSObject>
 
 /**
- The name of the entity
- 
- @return The name of the core data entity.
+ Updates data.
  */
-+ (NSString *)entityName;
-
+- (void)updateData;
 
 @end
 
