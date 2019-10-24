@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol CoreDataCommunicationProtocol <NSObject>
+@protocol PKCoreDataCommunicationProtocol <NSObject>
 
 /**
 Fetches data from the entity with the provided entity name.
