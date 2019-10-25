@@ -17,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @return The name of the core data entity.
  */
-+ (NSString *)entityName;
+- (NSString *)entityName;
 
 
 @end
